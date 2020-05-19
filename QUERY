@@ -1,0 +1,16 @@
+<?php
+$link = mysqli_connect("localhost", "root", "gemeau96", "projet_stage");
+
+/* Vérification de la connexion */
+if (mysqli_connect_errno()) {
+    printf("Échec de la connexion : %s\n", mysqli_connect_error());
+    exit();
+}
+$sql = 'SELECT * FROM EC';
+$res = $link->query($sql);
+while($data = mysqli_fetch_array($res)){
+    echo "<tr><td>".$data['HCM']."<br>"."</td></tr>";
+}
+
+
+mysqli_close($link);
