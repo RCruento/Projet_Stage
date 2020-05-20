@@ -48,38 +48,47 @@ $resNo = $BDD->query($sqlNo);
             }
             header("Refresh: 0");
 
-    }else{
-        header("Refresh: 0");
     }
-    //Modifier
-    if(isset($_POST['submitAjouter'])){
-        echo 'je suis dans le submitajouter </br>';
+    //Supprimer
+    if(isset($_POST['submitSupp'])){
+        echo 'je suis dans le submitsupprimer </br>';
         //Vérification de la categorie ajourté (au moins 4 lettres
-        echo '<div>je suis dans verif No Cat'. $_POST['ajoutNoCategorie'].'categorie : '.'Cat :'.$_POST['ajoutCategorie'].'</br> </div>';
+        echo '<div>je suis dans verif No Cat a supprier'. $_POST['suppCategorie'].'</br> </div>';
         $sqlVerifNoCatAjouter = $BDD->query('
                         SELECT NO_CAT
                         FROM CATEGORIES
-                        WHERE NO_CAT ='.$_POST['ajoutNoCategorie'].'
+                        WHERE NO_CAT ='.$_POST['suppCategorie'].'
                 '
         );
-        if(mysqli_num_rows($sqlVerifNoCatAjouter) == 0){
+        if(mysqli_num_rows($sqlVerifNoCatAjouter) != 0){
             echo'</br>                                     dans le num row';
-            $sqlAjoutCat = $BDD->prepare("
-                           INSERT INTO categories(NO_CAT, CATEGORIE)  VALUES (?, ?)  
-                        ");
-            $sqlAjoutCat->bind_param("ss", $_POST['ajoutNoCategorie'], $_POST['ajoutCategorie']);
-            $sqlAjoutCat->execute();
+            $sqlSupprCat = $BDD->query('
+                           DELETE FROM categories, ec WHERE NO_CAT ='.$_POST['suppCategorie'].'
+                           ');
         }else{
+
             header("Refresh: 0");
         }
         header("Refresh: 0");
 
+    }
+
+    //Modifier
+        //Nom Categorie
+    if(isset($_POST['submitModif'])) {
+        echo 'je suis dans le submitModif </br>';
+        //Vérification de la categorie ajourté (au moins 4 lettres
+        echo '<div>je suis dans verif categorie a modifier' . $_POST['enumCategorie'] . '</br> </div>';
+        $sqlSupprCat = $BDD->query('
+                               UPDATE categories SET CATEGORIE = ' . $_POST['modifCategorie'] . '
+                               ');
     }else{
         header("Refresh: 0");
     }
+        //Numero Categorie
 
 
-
+    header("Refresh: 0");
 
 ?>
 <!doctype html>
@@ -244,13 +253,15 @@ $resNo = $BDD->query($sqlNo);
                         <h5>Supprimer une categorie</h5>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="text" class="form-control" id="<?php echo $ClassSuppCategorie;?>" name="suppCategorie" value="<?php echo (isset($_POST['suppCategorie'])?$_POST['suppCategorie']:''); ?>" placeholder="Nom Categorie a supprimer" required="required">
+                            <input type="number" class="form-control" id="<?php echo $ClassSuppCategorie;?>" name="suppCategorie" value="<?php echo (isset($_POST['suppCategorie'])?$_POST['suppCategorie']:''); ?>" placeholder="No_Categorie a suppriemer" required="required">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <button type="submit" name="submitSupp" class="btn btn-primary btn-lg">Supprimer</button>
                     </div>
+                </form>
+                <form  method="post">
+
                     <!-- Modifier -->
                     <div class="form-group">
                         <h5>Modifier une categorie</h5>
