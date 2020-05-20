@@ -1,5 +1,5 @@
-<?php
-    if(!isset($_SESSION['user'])){
+<?php /** @noinspection ALL */
+if(!isset($_SESSION['user'])){
         include_once 'PHP_FONCTIONS.php';
         session_start();
         $BDD = connexionBDD();
@@ -7,46 +7,76 @@
         $data = mysqli_fetch_assoc($req);
         $_SESSION['user'] = $data['USERNAME'];
         $req->close();
+        deconnexionBDD($BDD);
     }
 ?>
 <?php
+$BDD = connexionBDD();
+$sql = 'SELECT * FROM categories';
+$res = $BDD->query($sql);
+$sqlNo = 'SELECT NO_CAT FROM categories';
+$resNo = $BDD->query($sqlNo);
 
     //Partie ajouter, supprimer, modifier
-        //Ajouter
+
     $ClassAjoutCategorie = 'ok';
+    $ClassAjoutNoCategorie = 'ok';
+    $ClassSuppCategorie = 'ok';
     $ChampsIncorrects = '';
+    $ClassModifCategorie = 'ok';
+    $ClassEnumCategorie ='ok';
+    //Ajouter
     if(isset($_POST['submitAjouter'])){
-        echo 'je suis dans le submitajouter';
-        if(isset($_POST['ajouter'])){
+        echo 'je suis dans le submitajouter </br>';
             //Vérification de la categorie ajourté (au moins 4 lettres
-            if ((strlen(trim($_POST['ajouter'])) < 3) )
-            {
-                $ChampsIncorrects = $ChampsIncorrects . '<li>nom</li>';
-                $ClassNom = 'error';
-            }
-            //Verification si la catégorie existe deja
-            $sqlVerifNoCat = $BDD->query('
-                    SELECT NO
+            echo '<div>je suis dans verif No Cat'. $_POST['ajoutNoCategorie'].'categorie : '.'Cat :'.$_POST['ajoutCategorie'].'</br> </div>';
+            $sqlVerifNoCatAjouter = $BDD->query('
+                    SELECT NO_CAT
+                    FROM CATEGORIES
+                    WHERE NO_CAT ='.$_POST['ajoutNoCategorie'].'
             '
             );
-
-
-            $sqlAjout = $BDD->prepare('
-                        INSERT INTO categories(NO_CAT, CATEGORIE)  VALUES (LAST_INSERT_ID()+1, :cat)
-            ');
-            $sqlAjout->bind_param(':cat', $_POST['ajouter']);
-            $sqlAjout->execute();
-            $sqlAjout->close();
+            if(mysqli_num_rows($sqlVerifNoCatAjouter) == 0){
+                echo'</br>                                     dans le num row';
+                $sqlAjoutCat = $BDD->prepare("
+                       INSERT INTO categories(NO_CAT, CATEGORIE)  VALUES (?, ?)  
+                    ");
+                $sqlAjoutCat->bind_param("ss", $_POST['ajoutNoCategorie'], $_POST['ajoutCategorie']);
+                $sqlAjoutCat->execute();
+            }else{
+                header("Refresh: 0");
+            }
             header("Refresh: 0");
 
-        }
+    }else{
+        header("Refresh: 0");
     }
+    //Modifier
+    if(isset($_POST['submitAjouter'])){
+        echo 'je suis dans le submitajouter </br>';
+        //Vérification de la categorie ajourté (au moins 4 lettres
+        echo '<div>je suis dans verif No Cat'. $_POST['ajoutNoCategorie'].'categorie : '.'Cat :'.$_POST['ajoutCategorie'].'</br> </div>';
+        $sqlVerifNoCatAjouter = $BDD->query('
+                        SELECT NO_CAT
+                        FROM CATEGORIES
+                        WHERE NO_CAT ='.$_POST['ajoutNoCategorie'].'
+                '
+        );
+        if(mysqli_num_rows($sqlVerifNoCatAjouter) == 0){
+            echo'</br>                                     dans le num row';
+            $sqlAjoutCat = $BDD->prepare("
+                           INSERT INTO categories(NO_CAT, CATEGORIE)  VALUES (?, ?)  
+                        ");
+            $sqlAjoutCat->bind_param("ss", $_POST['ajoutNoCategorie'], $_POST['ajoutCategorie']);
+            $sqlAjoutCat->execute();
+        }else{
+            header("Refresh: 0");
+        }
+        header("Refresh: 0");
 
-    $BDD = connexionBDD();
-    $sql = 'SELECT * FROM categories';
-    $res = $BDD->query($sql);
-    $sqlNo = 'SELECT NO_CAT FROM categories';
-    $resNo = $BDD->query($sqlNo);
+    }else{
+        header("Refresh: 0");
+    }
 
 
 
@@ -190,14 +220,20 @@
                     <p>Veuiller remplir ci-dessous si vous voulez modifier les catgerories: <br>
                         Ajouter, supprimer ou modifier</p>
                     <hr>
-                    <!-- Ajouter -->
+        <!-- Ajouter -->
                     <div class="form-group">
                         <h5>Ajouter une categorie</h5>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user-secret"></i></span>
-                            <input type="text" class="form-control" id="<?php echo $ClassAjoutCategorie?>" name="ajouter" value="<?php echo (isset($_POST['ajoutCategorie'])?$_POST['ajoutCategorie']:''); ?>" placeholder="Nom Categorie a ajouter" required="required">
+                            <input type="number" class="form-control" id="<?php echo $ClassAjoutNoCategorie?>" name="ajoutNoCategorie" value="<?php echo (isset($_POST['ajoutNoCategorie'])?$_POST['ajoutNoCategorie']:''); ?>" placeholder="Numéro Categorie a ajouter" required="required">
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user-secret"></i></span>
+                            <input type="text" class="form-control" id="<?php echo $ClassAjoutCategorie?>" name="ajoutCategorie" value="<?php echo (isset($_POST['ajoutCategorie'])?$_POST['ajoutCategorie']:''); ?>" placeholder="Nom Categorie a ajouter" required="required">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <button type="submit" name="submitAjouter" class="btn btn-primary btn-lg">Ajouter</button>
                     </div>
@@ -208,20 +244,19 @@
                         <h5>Supprimer une categorie</h5>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="text" class="form-control" id="<?php echo $ClassSuppCategorie;?>" name="mdp" value="<?php echo (isset($_POST['suppCategorie'])?$_POST['suppCategorie']:''); ?>" placeholder="Nom Categorie a supprimer" required="required">
+                            <input type="text" class="form-control" id="<?php echo $ClassSuppCategorie;?>" name="suppCategorie" value="<?php echo (isset($_POST['suppCategorie'])?$_POST['suppCategorie']:''); ?>" placeholder="Nom Categorie a supprimer" required="required">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" name="submitPW" class="btn btn-primary btn-lg">Supprimer</button>
+                        <button type="submit" name="submitSupp" class="btn btn-primary btn-lg">Supprimer</button>
                     </div>
                     <!-- Modifier -->
-
                     <div class="form-group">
                         <h5>Modifier une categorie</h5>
                         <div class="form-group">
                             <div class="input-group">
-                                <select class="form-control form-control-lg" id="<?php echo $ClassEnumCategorie; ?>" name="listCat" value="<?php echo (isset($_POST['enumCategorie'])?$_POST['enumCategorie']:''); ?>" placeholder="Categorie">
+                                <select class="form-control form-control-lg" id="<?php echo $ClassEnumCategorie; ?>" name="enumCategorie" value="<?php echo (isset($_POST['enumCategorie'])?$_POST['enumCategorie']:''); ?>" placeholder="Categorie">
                                     <?php
                                         while ($data = $resNo->fetch_assoc()){
                                             echo '<option>'.$data['NO_CAT'].'</option>';
@@ -234,12 +269,12 @@
 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="text" class="form-control" id="<?php echo $ClassModifCategorie;?>" name="mdp" value="<?php echo (isset($_POST['modifCategorie'])?$_POST['modifCategorie']:''); ?>" placeholder="Nouvelle Categorie" required="required">
+                            <input type="text" class="form-control" id="<?php echo $ClassModifCategorie;?>" name="modifCategorie" value="<?php echo (isset($_POST['modifCategorie'])?$_POST['modifCategorie']:''); ?>" placeholder="Nouvelle Categorie" required="required">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" name="submitPW" class="btn btn-primary btn-lg">Modifier</button>
+                        <button type="submit" name="submitModif" class="btn btn-primary btn-lg">Modifier</button>
                     </div>
                 </form>
             </div>
