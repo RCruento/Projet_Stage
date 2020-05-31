@@ -1,4 +1,4 @@
-<?php /** @noinspection ALL */
+<?php
 if(!isset($_SESSION['user'])){
         include_once 'PHP_FONCTIONS.php';
         session_start();
@@ -25,35 +25,32 @@ $resNo = $BDD->query($sqlNo);
     $ChampsIncorrects = '';
     $ClassModifCategorie = 'ok';
     $ClassEnumCategorie ='ok';
+    $ClassEnumMCategorie = 'ok';
+    $ClassModifNoCategorie = 'ok';
+
     //Ajouter
     if(isset($_POST['submitAjouter'])){
-        echo 'je suis dans le submitajouter </br>';
             //Vérification de la categorie ajourté (au moins 4 lettres
-            echo '<div>je suis dans verif No Cat'. $_POST['ajoutNoCategorie'].'categorie : '.'Cat :'.$_POST['ajoutCategorie'].'</br> </div>';
-            $sqlVerifNoCatAjouter = $BDD->query('
+        $sqlVerifNoCatAjouter = $BDD->query('
                     SELECT NO_CAT
                     FROM CATEGORIES
                     WHERE NO_CAT ='.$_POST['ajoutNoCategorie'].'
             '
-            );
-            if(mysqli_num_rows($sqlVerifNoCatAjouter) == 0){
-                echo'</br>                                     dans le num row';
-                $sqlAjoutCat = $BDD->prepare("
-                       INSERT INTO categories(NO_CAT, CATEGORIE)  VALUES (?, ?)  
-                    ");
-                $sqlAjoutCat->bind_param("ss", $_POST['ajoutNoCategorie'], $_POST['ajoutCategorie']);
-                $sqlAjoutCat->execute();
-            }else{
-                header("Refresh: 0");
-            }
+        );
+        if(mysqli_num_rows($sqlVerifNoCatAjouter) == 0){
+            $sqlAjoutCat = $BDD->prepare("
+                    INSERT INTO categories(NO_CAT, CATEGORIE)  VALUES (?, ?)  
+            ");
+            $sqlAjoutCat->bind_param("ss", $_POST['ajoutNoCategorie'], $_POST['ajoutCategorie']);
+            $sqlAjoutCat->execute();
+        }else{
             header("Refresh: 0");
-
+        }
+            header("Refresh: 0");
     }
+
     //Supprimer
     if(isset($_POST['submitSupp'])){
-        echo 'je suis dans le submitsupprimer </br>';
-        //Vérification de la categorie ajourté (au moins 4 lettres
-        echo '<div>je suis dans verif No Cat a supprier'. $_POST['suppCategorie'].'</br> </div>';
         $sqlVerifNoCatAjouter = $BDD->query('
                         SELECT NO_CAT
                         FROM CATEGORIES
@@ -61,7 +58,6 @@ $resNo = $BDD->query($sqlNo);
                 '
         );
         if(mysqli_num_rows($sqlVerifNoCatAjouter) != 0){
-            echo'</br>                                     dans le num row';
             $sqlSupprCat = $BDD->query('
                            DELETE FROM categories, ec WHERE NO_CAT ='.$_POST['suppCategorie'].'
                            ');
@@ -82,17 +78,13 @@ $resNo = $BDD->query($sqlNo);
         $sqlSupprCat = $BDD->query('
                                UPDATE categories SET CATEGORIE = ' . $_POST['modifCategorie'] . '
                                ');
-    }else{
-        header("Refresh: 0");
     }
         //Numero Categorie
 
-
-    header("Refresh: 0");
-
 ?>
+
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -123,25 +115,40 @@ $resNo = $BDD->query($sqlNo);
 
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-3 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link " href="Acceuil.php">
-                            <span data-feather="home"></span>
+                            <span data-feather="user"></span>
                             Profile
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="shopping-cart"></span>
-                            Categories <span class="sr-only">(current)</span>
+                        <a class="nav-link"  href="Categories.php"">
+                        <span data-feather="layers"></span>
+                        Categories <span class="sr-only">(current)</span>
                         </a>
+                        <div class="align-content-center" aria-labelledby="navbarDropdowwn">
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat1.php"><span data-feather="file-text"></span>    1</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat2.php"><span data-feather="file-text"></span>    2</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat3.php"><span data-feather="file-text"></span>    3</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat4.php"><span data-feather="file-text"></span>    4</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat5.php"><span data-feather="file-text"></span>    5</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat6.php"><span data-feather="file-text"></span>    6</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat7.php"><span data-feather="file-text"></span>    7</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat8.php"><span data-feather="file-text"></span>    8</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat9.php"><span data-feather="file-text"></span>    9</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat10.php"><span data-feather="file-text"></span>   10</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat11.php"><span data-feather="file-text"></span>   11</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat12.php"><span data-feather="file-text"></span>   12</a>
+                            <a class="dropdown-item" style="align-content: center" href="No_Cat13.php"><span data-feather="file-text"></span>   13</a>
+                        </div>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="Enseignants.php">
                             <span data-feather="users"></span>
-                            Composantes
+                            Enseignants
                         </a>
                     </li>
                     <li class="nav-item">
@@ -199,7 +206,7 @@ $resNo = $BDD->query($sqlNo);
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                 <h1 class="h1">Categories</h1>
             </div>
@@ -213,9 +220,9 @@ $resNo = $BDD->query($sqlNo);
                     <?php
                     while($data = mysqli_fetch_assoc($res)){
                         echo "<tr>
-                <td>".$data['NO_CAT']."</td>
-                <td>".$data['CATEGORIE']."</td>
-          </tr>";
+                                <td>".$data['NO_CAT']."</td>
+                                <td>".$data['CATEGORIE']."</td>
+                              </tr>";
                     }
                     $res->close();
                     ?>
@@ -229,7 +236,7 @@ $resNo = $BDD->query($sqlNo);
                     <p>Veuiller remplir ci-dessous si vous voulez modifier les catgerories: <br>
                         Ajouter, supprimer ou modifier</p>
                     <hr>
-        <!-- Ajouter -->
+                     <!-- Ajouter -->
                     <div class="form-group">
                         <h5>Ajouter une categorie</h5>
                         <div class="input-group">
@@ -247,8 +254,8 @@ $resNo = $BDD->query($sqlNo);
                         <button type="submit" name="submitAjouter" class="btn btn-primary btn-lg">Ajouter</button>
                     </div>
                 </form>
+                <!-- Supprimer-->
                 <form  method="post">
-                    <!-- Supprimer-->
                     <div class="form-group">
                         <h5>Supprimer une categorie</h5>
                         <div class="input-group">
@@ -260,32 +267,53 @@ $resNo = $BDD->query($sqlNo);
                         <button type="submit" name="submitSupp" class="btn btn-primary btn-lg">Supprimer</button>
                     </div>
                 </form>
+                <!-- Modifier Nom Categorie -->
                 <form  method="post">
-
-                    <!-- Modifier -->
                     <div class="form-group">
-                        <h5>Modifier une categorie</h5>
+                        <h5>Modifier le nom une categorie</h5>
                         <div class="form-group">
                             <div class="input-group">
-                                <select class="form-control form-control-lg" id="<?php echo $ClassEnumCategorie; ?>" name="enumCategorie" value="<?php echo (isset($_POST['enumCategorie'])?$_POST['enumCategorie']:''); ?>" placeholder="Categorie">
+                                <select class="form-control-sm form-control-lg" id="<?php echo $ClassEnumCategorie; ?>" name="enumCategorie" value="<?php echo (isset($_POST['enumCategorie'])?$_POST['enumCategorie']:''); ?>" placeholder="Categorie">
                                     <?php
                                         while ($data = $resNo->fetch_assoc()){
                                             echo '<option>'.$data['NO_CAT'].'</option>';
                                         }
-                                        $resNo->close();
                                     ?>
                                 </select>
                             </div>
                         </div>
-
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                             <input type="text" class="form-control" id="<?php echo $ClassModifCategorie;?>" name="modifCategorie" value="<?php echo (isset($_POST['modifCategorie'])?$_POST['modifCategorie']:''); ?>" placeholder="Nouvelle Categorie" required="required">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <button type="submit" name="submitModif" class="btn btn-primary btn-lg">Modifier</button>
+                        <button type="submit" name="submitModif" class="btn btn-primary btn-lg">Modifier nom Categorie</button>
+                    </div>
+                </form>
+                <!-- Modifier le numero d'une catégorie -->
+                <form  method="post">
+                    <div class="form-group">
+                        <h5>Modifier le numero une categorie</h5>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select class="form-control-sm form-control-lg" id="<?php echo $ClassEnumCategorie; ?>" name="enumCategorie" value="<?php echo (isset($_POST['enumCategorie'])?$_POST['enumCategorie']:''); ?>" placeholder="Categorie">
+                                    <?php
+                                    while ($data = $resNo->fetch_assoc()){
+                                        echo '<option>'.$data['NO_CAT'].'</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="number" class="form-control" id="<?php echo $ClassModifNoCategorie;?>" name="modifNoCategorie" value="<?php echo (isset($_POST['modifNoCategorie'])?$_POST['modifNoCategorie']:''); ?>" placeholder="Nouveau N° Categorie" required="required">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" name="submitModifNoCat" class="btn btn-primary btn-lg">Modifier N° Categorie</button>
                     </div>
                 </form>
             </div>

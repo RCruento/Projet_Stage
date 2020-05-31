@@ -50,7 +50,7 @@
     }
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -86,7 +86,7 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
-                            <span data-feather="home"></span>
+                            <span data-feather="user"></span>
                             Profile <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -97,9 +97,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="Enseignants.php">
                             <span data-feather="users"></span>
-                            Composantes
+                            Enseignants
                         </a>
                     </li>
                     <li class="nav-item">
@@ -132,7 +132,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="file-text"></span>
-                            Etape
+                            Services
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ImportExcel.php">
+                            <span data-feather="file-text"></span>
+                            Importer Fichier excel
                         </a>
                     </li>
                     <li class="nav-item">
@@ -141,12 +147,8 @@
                             Semestre
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Services
-                        </a>
-                    </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="file-text"></span>

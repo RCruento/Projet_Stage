@@ -183,7 +183,7 @@ $(function () {
 
     var dropHTML =
         '<ul class="drop nav">' +
-        '  <li class="dropdown"><a data-toggle="dropdown" href="#">1</a>' +
+        '  <li class="dropdown"><a  href="#">1</a>' +
         '    <ul class="dropdown-menu nav">' +
         '      <li><a href="#1-1" data-toggle="tab">1-1</a></li>' +
         '      <li><a href="#1-2" data-toggle="tab">1-2</a></li>' +
@@ -329,7 +329,7 @@ $(function () {
     var tabsHTML = '<ul class="nav nav-tabs">' +
         '<li class="nav-item"><a class="nav-link" href="#home" data-toggle="tab">Home</a></li>' +
         '<li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>' +
-        '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Dropdown</a>' +
+        '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active"  href="#">Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item active" href="#dropdown1" id="dropdown1-tab" data-toggle="tab">@fat</a>' +
         '<a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-toggle="tab">@mdo</a>' +

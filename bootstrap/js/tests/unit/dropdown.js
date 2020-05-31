@@ -48,7 +48,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>' +
+        '<button disabled href="#" class="btn dropdown-toggle" >Dropdown</button>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -58,7 +58,7 @@ $(function () {
         '</div>' +
         '</div>'
     $(dropdownHTML).appendTo('#qunit-fixture')
-    var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
+    var $dropdown = $('#qunit-fixture').find('[]').bootstrapDropdown()
     $dropdown.on('click', function () {
       assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
       done()
@@ -71,14 +71,14 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
         '</div>' +
         '</div>' +
         '</div>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
+    var $dropdown = $(dropdownHTML).find('[]').bootstrapDropdown()
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
@@ -93,14 +93,14 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle"  data-boundary="viewport">Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
         '</div>' +
         '</div>' +
         '</div>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
+    var $dropdown = $(dropdownHTML).find('[]').bootstrapDropdown()
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
@@ -115,7 +115,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle"  aria-expanded="false">Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -126,7 +126,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
     $dropdown
       .parent('.dropdown')
@@ -142,7 +142,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" aria-expanded="false" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -153,7 +153,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     $dropdown
@@ -172,7 +172,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>' +
+        '<button href="#" class="btn dropdown-toggle disabled" >Dropdown</button>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -183,7 +183,7 @@ $(function () {
         '</div>'
 
     $(dropdownHTML).appendTo('#qunit-fixture')
-    var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
+    var $dropdown = $('#qunit-fixture').find('[]').bootstrapDropdown()
     $dropdown.on('click', function () {
       assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
       done()
@@ -196,7 +196,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -205,7 +205,7 @@ $(function () {
         '</div>' +
         '</div>' +
         '</div>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
+    var $dropdown = $(dropdownHTML).find('[]').bootstrapDropdown()
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
@@ -220,7 +220,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="/foo/" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="/foo/" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -229,7 +229,7 @@ $(function () {
         '</div>' +
         '</div>' +
         '</div>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
+    var $dropdown = $(dropdownHTML).find('[]').bootstrapDropdown()
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
@@ -244,7 +244,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -255,7 +255,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     $dropdown
@@ -275,7 +275,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -286,7 +286,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
     $dropdown
       .parent('.dropdown')
@@ -307,7 +307,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="nav">' +
         '<div class="dropdown" id="testmenu">' +
-        '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>' +
+        '<a class="dropdown-toggle"  href="#testmenu">Test menu <span class="caret"/></a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#sub1">Submenu 1</a>' +
         '</div>' +
@@ -315,12 +315,12 @@ $(function () {
         '</div>' +
         '<div class="btn-group">' +
         '<button class="btn">Actions</button>' +
-        '<button class="btn dropdown-toggle" data-toggle="dropdown"></button>' +
+        '<button class="btn dropdown-toggle" ></button>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Action 1</a>' +
         '</div>' +
         '</div>'
-    var $dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
+    var $dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[]')
     var $first = $dropdowns.first()
     var $last = $dropdowns.last()
 
@@ -353,7 +353,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="nav">' +
         '<div class="dropdown" id="testmenu">' +
-        '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>' +
+        '<a class="dropdown-toggle"  href="#testmenu">Test menu <span class="caret"/></a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#sub1">Submenu 1</a>' +
         '</div>' +
@@ -361,12 +361,12 @@ $(function () {
         '</div>' +
         '<div class="btn-group">' +
         '<button class="btn">Actions</button>' +
-        '<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"/></button>' +
+        '<button class="btn dropdown-toggle" ><span class="caret"/></button>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Action 1</a>' +
         '</div>' +
         '</div>'
-    var $dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
+    var $dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[]')
     var $first = $dropdowns.first()
     var $last = $dropdowns.last()
 
@@ -402,7 +402,7 @@ $(function () {
     assert.expect(2)
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -413,7 +413,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var done = assert.async()
@@ -436,7 +436,7 @@ $(function () {
     assert.expect(2)
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -447,7 +447,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var done = assert.async()
@@ -470,7 +470,7 @@ $(function () {
     assert.expect(2)
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -481,7 +481,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
     var done = assert.async()
 
@@ -504,7 +504,7 @@ $(function () {
 
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -517,7 +517,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var $input = $('#input')
@@ -549,7 +549,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item disabled" href="#">Disabled link</a>' +
         '<a class="dropdown-item" href="#">Another link</a>' +
@@ -558,7 +558,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     $dropdown
@@ -582,7 +582,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a id="item1" class="dropdown-item" href="#">A link</a>' +
         '<a id="item2" class="dropdown-item" href="#">Another link</a>' +
@@ -591,7 +591,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     $dropdown
@@ -621,14 +621,14 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
     var dropdownHTML = '<div class="dropdown">' +
-        '<button type="button" data-toggle="dropdown">Dropdown</button>' +
+        '<button type="button" >Dropdown</button>' +
         '<div class="dropdown-menu">' +
         '<input id="textField" type="text" />' +
         '</div>' +
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var $textfield = $('#textField')
@@ -650,14 +650,14 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
     var dropdownHTML = '<div class="dropdown">' +
-        '<button type="button" data-toggle="dropdown">Dropdown</button>' +
+        '<button type="button" >Dropdown</button>' +
         '<div class="dropdown-menu">' +
         '<textarea id="textArea"></textarea>' +
         '</div>' +
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var $textarea = $('#textArea')
@@ -680,7 +680,7 @@ $(function () {
     var done = assert.async()
     var html = '<nav class="navbar navbar-expand-md navbar-light bg-light">' +
         '<div class="dropdown">' +
-        '  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>' +
+        '  <a class="nav-link dropdown-toggle" href="#" id="dropdown"  aria-haspopup="true" aria-expanded="false">Dropdown</a>' +
         '  <div class="dropdown-menu" aria-labelledby="dropdown">' +
         '    <a class="dropdown-item" href="#">Action</a>' +
         '    <a class="dropdown-item" href="#">Another action</a>' +
@@ -691,7 +691,7 @@ $(function () {
 
     $(html).appendTo('#qunit-fixture')
     var $triggerDropdown = $('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
     var $dropdownMenu = $triggerDropdown.next()
 
@@ -710,7 +710,7 @@ $(function () {
 
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<a href="#" class="dropdown-toggle" >Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Secondary link</a>' +
         '<a class="dropdown-item" href="#">Something else here</a>' +
@@ -723,7 +723,7 @@ $(function () {
         '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var $input = $('#input')
@@ -780,7 +780,7 @@ $(function () {
     var dropdownHTML =
         '<ul class="nav tabs">' +
         '  <li class="dropdown">' +
-        '    <input type="text" id="input" data-toggle="dropdown">' +
+        '    <input type="text" id="input" >' +
         '    <div class="dropdown-menu" role="menu">' +
         '      <a id="item1" class="dropdown-item" href="#">Secondary link</a>' +
         '      <a id="item2" class="dropdown-item" href="#">Something else here</a>' +
@@ -792,7 +792,7 @@ $(function () {
 
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var $input = $('#input')
@@ -848,7 +848,7 @@ $(function () {
     var dropdownHTML =
         '<ul class="nav tabs">' +
         '  <li class="dropdown">' +
-        '    <textarea id="textarea" data-toggle="dropdown"></textarea>' +
+        '    <textarea id="textarea" ></textarea>' +
         '    <div class="dropdown-menu" role="menu">' +
         '      <a id="item1" class="dropdown-item" href="#">Secondary link</a>' +
         '      <a id="item2" class="dropdown-item" href="#">Something else here</a>' +
@@ -860,7 +860,7 @@ $(function () {
 
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
+      .find('[]')
       .bootstrapDropdown()
 
     var $textarea = $('#textarea')
